@@ -3,57 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Taş Kağıt Makas</title>
+  <title>Rock, Paper, Scissors</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
+      background-color: #6633CC;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh; /* Tam ekran yüksekliği */
-      background-color: #6633CC; /* Arka plan rengi */
+      height: 100vh;
+      overflow: hidden;
     }
 
-    .container {
+    .background {
       position: relative;
-      max-width: 90%; /* Görsel genişliği ekranın %90'ına kadar */
-      max-height: 90%; /* Görsel yüksekliği ekranın %90'ına kadar */
+      width: 100vw;
+      height: 100vh;
+      background: url('main.jpg') no-repeat center center/cover;
     }
 
-    img {
-      width: 100%;
-      height: auto;
-      object-fit: contain; /* Görseli taşırmadan sığdırır */
-    }
-
-    .button {
+    .pay-now-button {
       position: absolute;
-      bottom: 10%; /* Görselin alt kısmına yakın */
-      left: 50%;
+      bottom: 120px; /* Görselin altındaki Pay Now yazısına göre ayarlandı */
+      left: 60%; /* Yaklaşık konum */
       transform: translateX(-50%);
-      background-color: rgba(255, 255, 255, 0.5); /* Şeffaf beyaz */
-      color: #000; /* Yazı rengi */
-      padding: 10px 20px;
+      background-color: rgba(255, 255, 255, 0.7);
+      color: #000;
       border: none;
-      border-radius: 5px;
-      font-size: 18px;
+      padding: 15px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 30px;
       cursor: pointer;
     }
 
-    .button:hover {
-      background-color: rgba(255, 255, 255, 0.7); /* Hover efekti */
+    .pay-now-button:hover {
+      background-color: rgba(255, 255, 255, 1);
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="main.jpg" alt="Taş Kağıt Makas Görseli">
-    <button class="button">Pay Now</button>
+  <div class="background">
+    <button class="pay-now-button">Pay Now</button>
   </div>
 </body>
 </html>
