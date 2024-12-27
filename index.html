@@ -11,21 +11,22 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 70vh;
+      height: 100vh;
       overflow: hidden;
     }
 
     .background {
       position: relative;
-      width: 80vw;
-      height: 70vh;
-      background: url('main.jpg') no-repeat center center/cover;
+      width: 100vw;
+      height: 100vh;
+      background: url('main.jpg') no-repeat center center;
+      background-size: cover; /* Görselin tam ekran kaplamasını sağlar */
     }
 
     .pay-now-button {
       position: absolute;
-      bottom: 120px; /* Görselin altındaki Pay Now yazısına göre ayarlandı */
-      left: 60%; /* Yaklaşık konum */
+      bottom: 15%;
+      left: 50%;
       transform: translateX(-50%);
       background-color: rgba(255, 255, 255, 0.7);
       color: #000;
