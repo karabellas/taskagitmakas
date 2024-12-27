@@ -5,15 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Taş Kağıt Makas</title>
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      background: url('main.jpg') no-repeat center center fixed;
-      background-size: cover; /* Görseli tam ekrana sığdırır */
-      height: 100vh; /* Sayfa yüksekliğini tam ekran yapar */
+      box-sizing: border-box;
+    }
+
+    body {
       display: flex;
       justify-content: center;
       align-items: center;
+      height: 100vh; /* Tam ekran yüksekliği */
+      background: url('main.jpg') no-repeat center center fixed;
+      background-size: cover; /* Görsel tam ekrana sığar */
     }
 
     button {
