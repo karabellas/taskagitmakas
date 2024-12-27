@@ -24,12 +24,20 @@
       align-items: center;
     }
 
+    .reward {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #ffd700;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+      margin-bottom: 10px;
+    }
+
     .title {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: bold;
       text-align: center;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-      margin-bottom: 50px;
+      margin-bottom: 30px;
     }
 
     .progress-bar {
@@ -47,6 +55,14 @@
       height: 100%;
       background: #4caf50;
       transition: width 0.5s ease-in-out;
+    }
+
+    .description {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: 20px;
+      line-height: 1.5;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     }
 
     .buttons {
@@ -84,9 +100,18 @@
 </head>
 <body>
   <div class="container">
+    <div class="reward">ÖDÜL: 1 BNB</div>
     <div class="title">Taş Kağıt Makas Turnuvası</div>
     <div class="progress-bar">
       <div class="progress-bar-fill"></div>
+    </div>
+    <div class="description">
+      Klasik bildiğiniz taş kağıt makas oyununu oynamaya hazır mısınız?<br>
+      Katılım sadece <b>0,00040 BNB</b>. Kazanmanız durumunda <b>x500 ödül</b> kazabilirsiniz.<br>
+      Kaybedecek bir şeyiniz yok. Ama eğer kazanırsanız :)<br><br>
+      Ready to play the classic Rock-Paper-Scissors game?<br>
+      Entry fee is only <b>0.00040 BNB</b>. If you win, you can earn <b>x500 reward</b>.<br>
+      You have nothing to lose. But if you win :)
     </div>
     <div class="buttons">
       <button class="button pay-now">Pay Now</button>
