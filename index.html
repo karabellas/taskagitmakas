@@ -19,33 +19,14 @@
       background-color: #f4f4f4; /* Arka plan rengi */
     }
 
-    .container {
-      position: relative;
-      width: 90%; /* Görsel genişliği (ekrana göre ayarlanır) */
-      max-width: 1200px; /* Görselin maksimum genişliği */
-      aspect-ratio: 16 / 9; /* Görselin en-boy oranını sabitler */
-      background: url('main.jpg') no-repeat center center;
-      background-size: contain; /* Görsel küçültülür ve sığdırılır */
-    }
-
-    button {
-      position: absolute;
-      bottom: 10%; /* Görselin alt kısmında buton konumu */
-      left: 50%; /* Ortalıyor */
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.5); /* Şeffaf arka plan */
-      border: none;
-      color: white;
-      font-size: 18px;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
+    img {
+      max-width: 90%; /* Görsel genişliği ekranın %90'ına kadar */
+      max-height: 90%; /* Görsel yüksekliği ekranın %90'ına kadar */
+      object-fit: contain; /* Görseli taşırmadan sığdırır */
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <button></button>
-  </div>
+  <img src="main.jpg" alt="Taş Kağıt Makas Görseli">
 </body>
 </html>
