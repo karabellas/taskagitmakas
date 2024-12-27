@@ -133,18 +133,19 @@
 
   <script>
     function joinNow() {
-      // Çubuğun genişliği ve metni manuel olarak ayarlanabilir
-      const progressBar = document.getElementById("progressBar");
-      const progressText = document.getElementById("progressText");
+      // Kullanıcı bilgilerini al
+      const name = prompt("Adınızı ve soyadınızı girin:");
+      if (!name) return;
 
-      const newProgress = prompt("Yeni yüzdelik değeri girin (0-100):", "0");
-      
-      if (newProgress !== null && !isNaN(newProgress) && newProgress >= 0 && newProgress <= 100) {
-        progressBar.style.width = `${newProgress}%`;
-        progressText.innerText = `%${newProgress}`;
-      } else {
-        alert("Lütfen 0 ile 100 arasında bir değer girin.");
-      }
+      const email = prompt("E-posta adresinizi girin:");
+      if (!email) return;
+
+      // Mail gönderimi için `mailto` bağlantısı oluştur
+      const mailto = `mailto:yigitkarabal@gmail.com?subject=Turnuva Katılımı&body=Ad Soyad: ${name}%0AE-posta: ${email}`;
+      window.location.href = mailto;
+
+      // Mesaj göster
+      alert("Ödeme işlemi yaptıysanız, bilgileriniz işlenmiştir. Teşekkür ederiz!");
     }
 
     function payNow() {
