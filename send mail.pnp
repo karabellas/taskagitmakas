@@ -1,0 +1,27 @@
+<?php
+// Gelen POST verilerini alıyoruz
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name = htmlspecialchars(strip_tags($_POST['name']));
+    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+
+    // Geçersiz e-posta adreslerini kontrol ediyoruz
+    if (!$email) {
+        die("Geçersiz e-posta adresi.");
+    }
+
+    // E-posta bilgileri
+    $to = "recipient@example.com"; // Bunu kendi e-posta adresinizle değiştirin
+    $subject = "Yeni Katılımcı Bilgisi";
+    $message = "Ad Soyad: $name\nE-posta: $email\n";
+    $headers = "From: no-reply@yourdomain.com";
+
+    // E-posta gönderimi
+    if (mail($to, $subject, $message, $headers)) {
+        echo "Bilgiler başarıyla gönderildi. Ödeme yaptıysanız bilgileriniz işlenmiştir.";
+    } else {
+        echo "Bilgiler gönderilemedi. Lütfen daha sonra tekrar deneyin.";
+    }
+} else {
+    echo "Bu sayfaya doğrudan erişim sağlanamaz.";
+}
+?>
