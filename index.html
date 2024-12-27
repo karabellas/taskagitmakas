@@ -3,39 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taş Kağıt Makas Turnuvası</title>
+    <title>Taş Kağıt Makas</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
+            background: url('main.jpg') no-repeat center center fixed;
+            background-size: cover;
             font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f9f9f9;
-            padding: 20px;
         }
-        h1 {
-            color: #4CAF50;
+
+        .button-container {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
         }
-        .info {
-            margin: 20px 0;
-            font-size: 18px;
-            color: #333;
-        }
-        .button {
-            background-color: #4CAF50;
-            color: white;
+
+        button {
+            background-color: #28a745;
             border: none;
-            padding: 10px 20px;
-            font-size: 16px;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            margin: 4px 2px;
             cursor: pointer;
             border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
         }
-        .button:hover {
-            background-color: #45a049;
+
+        button:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
-    <h1>Taş Kağıt Makas</h1>
-    <p class="info">x500 kazanma şansı!</p>
-    <button class="button" onclick="alert('Ödeme sistemi yakında entegre edilecek!')">Ödeme Yap</button>
+    <div class="button-container">
+        <button>Pay Now</button>
+    </div>
 </body>
 </html>
