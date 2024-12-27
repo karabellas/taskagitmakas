@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Now</title>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+    // EmailJS başlatma
+    (function() {
+      emailjs.init("service_cx88ixh"); // Buraya kendi EmailJS kullanıcı ID'nizi girin
+    })();
+  </script>
+</head>
+<body>
+  <h1>Join Our Tournament</h1>
+  <p>Enter your email below to join:</p>
+
+  <!-- Kullanıcının e-posta adresini gireceği kutu -->
+  <input type="email" id="emailInput" placeholder="Enter your email" required />
+
+  <!-- Join Now butonu -->
+  <button id="joinNowButton">Join Now</button>
+
+  <script>
+    document.getElementById("joinNowButton").addEventListener("click", function() {
+      // Kullanıcıdan alınan e-posta adresi
+      const userEmail = document.getElementById("emailInput").value;
+
+      // E-posta adresi boş mu kontrol edin
+      if (!userEmail) {
+        alert("Lütfen e-posta adresinizi girin!");
+        return;
+      }
+
+      // EmailJS'e gönderilecek veriler
+      const templateParams = {
+        to_name: "Yiğit Karabal", // Alıcı adı
+        from_name: "Turnuva Katılım", // Gönderen adı
+        message: `Yeni bir kullanıcı katıldı: ${userEmail}`, // Mesaj içeriği
+        reply_to: userEmail // Kullanıcının e-postası (isteğe bağlı)
+      };
+
+      // EmailJS ile e-posta gönderimi
+      emailjs.send("service_cx88ixh", "template_wdjn49q", templateParams)
+        .then(function(response) {
+          console.log("SUCCESS!", response.status, response.text);
+          alert("E-posta başarıyla gönderildi!");
+        }, function(error) {
+          console.log("FAILED...", error);
+          alert("Bir hata oluştu, lütfen tekrar deneyin.");
+        });
+    });
+  </script>
+</body>
+</html>
