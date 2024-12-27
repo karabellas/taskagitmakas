@@ -114,8 +114,8 @@
     <div class="reward">ÖDÜL: 1 BNB</div>
     <div class="title">Taş Kağıt Makas Turnuvası</div>
     <div class="progress-bar">
-      <div class="progress-bar-fill"></div>
-      <div class="progress-bar-text">%0</div>
+      <div class="progress-bar-fill" id="progressBar"></div>
+      <div class="progress-bar-text" id="progressText">%0</div>
     </div>
     <div class="description">
       Klasik bildiğiniz taş kağıt makas oyununu oynamaya hazır mısınız?<br>
@@ -126,9 +126,33 @@
       You have nothing to lose. But if you win :)
     </div>
     <div class="buttons">
-      <button class="button pay-now">Pay Now</button>
-      <button class="button join-now">Join Now</button>
+      <button class="button pay-now" onclick="payNow()">Pay Now</button>
+      <button class="button join-now" onclick="joinNow()">Join Now</button>
     </div>
   </div>
+
+  <script>
+    function joinNow() {
+      // Çubuğun genişliği ve metni manuel olarak ayarlanabilir
+      const progressBar = document.getElementById("progressBar");
+      const progressText = document.getElementById("progressText");
+
+      const newProgress = prompt("Yeni yüzdelik değeri girin (0-100):", "0");
+      
+      if (newProgress !== null && !isNaN(newProgress) && newProgress >= 0 && newProgress <= 100) {
+        progressBar.style.width = `${newProgress}%`;
+        progressText.innerText = `%${newProgress}`;
+      } else {
+        alert("Lütfen 0 ile 100 arasında bir değer girin.");
+      }
+    }
+
+    function payNow() {
+      const walletAddress = "0x7430287804Fd98886f227Ab2192192A921e12c87";
+      const amount = 0.00040; // Minimum ödeme miktarı
+      alert(`Lütfen ${walletAddress} adresine en az ${amount} BNB gönderin.`);
+      window.open(`https://www.binance.com/en/transfer?address=${walletAddress}&amount=${amount}`, "_blank");
+    }
+  </script>
 </body>
 </html>
