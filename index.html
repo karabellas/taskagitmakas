@@ -48,13 +48,24 @@
       border-radius: 15px;
       overflow: hidden;
       margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .progress-bar-fill {
-      width: 50%; /* Başlangıçta yüzde 50 dolu */
+      width: 0%; /* Başlangıçta tamamen boş */
       height: 100%;
       background: #4caf50;
       transition: width 0.5s ease-in-out;
+    }
+
+    .progress-bar-text {
+      position: absolute;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     }
 
     .description {
@@ -104,6 +115,7 @@
     <div class="title">Taş Kağıt Makas Turnuvası</div>
     <div class="progress-bar">
       <div class="progress-bar-fill"></div>
+      <div class="progress-bar-text">%0</div>
     </div>
     <div class="description">
       Klasik bildiğiniz taş kağıt makas oyununu oynamaya hazır mısınız?<br>
