@@ -16,24 +16,36 @@
       justify-content: center;
       align-items: center;
       height: 100vh; /* Tam ekran yüksekliği */
-      background: url('main.jpg') no-repeat center center fixed;
-      background-size: cover; /* Görsel tam ekrana sığar */
+      background-color: #f4f4f4; /* Arka plan rengi */
+    }
+
+    .container {
+      position: relative;
+      width: 90%; /* Görsel genişliği (ekrana göre ayarlanır) */
+      max-width: 1200px; /* Görselin maksimum genişliği */
+      aspect-ratio: 16 / 9; /* Görselin en-boy oranını sabitler */
+      background: url('main.jpg') no-repeat center center;
+      background-size: contain; /* Görsel küçültülür ve sığdırılır */
     }
 
     button {
       position: absolute;
+      bottom: 10%; /* Görselin alt kısmında buton konumu */
+      left: 50%; /* Ortalıyor */
+      transform: translateX(-50%);
       background: rgba(0, 0, 0, 0.5); /* Şeffaf arka plan */
       border: none;
-      width: 150px; /* Buton genişliği */
-      height: 50px; /* Buton yüksekliği */
+      color: white;
+      font-size: 18px;
+      padding: 10px 20px;
+      border-radius: 5px;
       cursor: pointer;
-      top: 50%; /* Butonu görselin ortasına taşır */
-      left: 50%; /* Butonu yatay olarak ortalar */
-      transform: translate(-50%, -50%);
     }
   </style>
 </head>
 <body>
-  <button></button>
+  <div class="container">
+    <button></button>
+  </div>
 </body>
 </html>
