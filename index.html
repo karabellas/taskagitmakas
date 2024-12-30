@@ -112,6 +112,37 @@
     .wallet-info b {
       font-size: 20px;
     }
+
+    .form-container {
+      display: none;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .form-container input {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .form-container button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-container button:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
@@ -147,11 +178,24 @@
     </div>
   </div>
 
+  <!-- Katılım Formu -->
+  <div class="form-container" id="formContainer">
+    <h3>Katılım Bilgilerinizi Girin</h3>
+    <form id="joinForm">
+      <input type="text" id="firstName" placeholder="Ad" required /><br>
+      <input type="text" id="lastName" placeholder="Soyad" required /><br>
+      <input type="email" id="email" placeholder="E-posta" required /><br>
+      <button type="submit">Gönder</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
+    emailjs.init('TzYIZVogtgRr4syCN'); // Public key'inizi burada kullanın
+
     function joinNow() {
-      // Katılım bilgileri formunu açmak için kodu buraya ekleyebilirsiniz
-      alert("Katılımcı olarak kaydınız yapılmıştır! Başarılar dileriz.");
-      document.getElementById("progressText").innerText = "%0"; // Katılım onayı sonrası %0'ı göster
+      // Katılım formunu aç
+      document.getElementById("formContainer").style.display = "block";
     }
 
     function payNow() {
@@ -195,6 +239,29 @@
         </html>
       `);
     }
+
+    document.getElementById("joinForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // Sayfanın yenilenmesini engelle
+
+      const firstName = document.getElementById("firstName").value;
+      const lastName = document.getElementById("lastName").value;
+      const email = document.getElementById("email").value;
+
+      const templateParams = {
+        first_name: firstName,
+        last_name: lastName,
+        email: email
+      };
+
+      emailjs.send('service_we8ffsa', 'template_48vl8mm', templateParams)
+        .then(function(response) {
+          alert('Bilgileriniz başarıyla gönderildi! Katılımınız onaylanmıştır.');
+          document.getElementById("progressText").innerText = "%0";
+          document.getElementById("formContainer").style.display = "none"; // Formu gizle
+        }, function(error) {
+          alert('Bir hata oluştu: ' + error.text);
+        });
+    });
   </script>
 </body>
 </html>
