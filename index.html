@@ -83,6 +83,30 @@
     .button:hover {
       background-color: #0056b3;
     }
+
+    .form-container {
+      display: none;
+      margin-top: 20px;
+      text-align: left;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 8px;
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+    }
+
+    .form-container button {
+      background-color: #28a745;
+    }
   </style>
 </head>
 <body>
@@ -95,7 +119,7 @@
     </div>
     <div class="description">
       Klasik bildiğiniz taş kağıt makas oyununu oynamaya hazır mısınız?<br>
-      Katılım sadece <b>0,00040 BNB</b>. Kazanmanız durumunda <b>x500 ödül</b> kazabilirsiniz.<br>
+      Katılım sadece <b>0,00040 BNB</b>. Kazanmanız durumunda <b>x500 ödül</b> kazanabilirsiniz.<br>
       Kaybedecek bir şeyiniz yok. Ama eğer kazanırsanız :)<br><br>
       Ready to play the classic Rock-Paper-Scissors game?<br>
       Entry fee is only <b>0.00040 BNB</b>. If you win, you can earn <b>x500 reward</b>.<br>
@@ -105,13 +129,45 @@
       <button class="button pay-now" onclick="payNow()">Pay Now</button>
       <button class="button join-now" onclick="joinNow()">Join Now</button>
     </div>
+
+    <!-- Form for collecting user details -->
+    <div class="form-container" id="formContainer">
+      <h3>Katılım Bilgilerinizi Girin</h3>
+      <form id="userForm">
+        <input type="text" id="name" placeholder="İsim" required><br>
+        <input type="text" id="surname" placeholder="Soyisim" required><br>
+        <input type="email" id="email" placeholder="E-posta" required><br>
+        <button type="submit" class="button">Katılımı Tamamla</button>
+      </form>
+    </div>
   </div>
 
   <script>
     function joinNow() {
+      // Katılımı onaylayan mesaj
       alert("Katılımcı olarak kaydınız yapılmıştır! Başarılar dileriz.");
-      document.getElementById("progressText").innerText = "%50"; // Örnek ilerleme güncellemesi
+      
+      // Katılımcı bilgileri formunu göster
+      document.getElementById("formContainer").style.display = "block";
     }
+
+    // Formu gönderdiğinde bilgileri al ve göster
+    document.getElementById("userForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // Formun normal şekilde gönderilmesini engeller
+
+      const name = document.getElementById("name").value;
+      const surname = document.getElementById("surname").value;
+      const email = document.getElementById("email").value;
+
+      alert(`Katılım Başarıyla Tamamlandı!\nAd: ${name}\nSoyad: ${surname}\nE-posta: ${email}`);
+
+      // İlerleme çubuğunu güncelle
+      document.getElementById("progressText").innerText = "%50"; // Örnek ilerleme güncellemesi
+
+      // Formu sıfırla ve gizle
+      document.getElementById("userForm").reset();
+      document.getElementById("formContainer").style.display = "none";
+    });
 
     function payNow() {
       const walletAddress = "0x7430287804Fd98886f227Ab2192192A921e12c87";
