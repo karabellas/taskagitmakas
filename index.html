@@ -107,6 +107,19 @@
     .form-container button {
       background-color: #28a745;
     }
+
+    .message-container {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 8px;
+      width: 50%;
+      margin: 0 auto;
+      color: #ffffff;
+      font-size: 18px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -140,14 +153,16 @@
         <button type="submit" class="button">Katılımı Tamamla</button>
       </form>
     </div>
+
+    <!-- Message to show after form submission -->
+    <div class="message-container" id="messageContainer">
+      Ödemeniz kontrol edilecek ve katılımınız onaylanacaktır.
+    </div>
   </div>
 
   <script>
     function joinNow() {
-      // Katılımı onaylayan mesaj
-      alert("Katılımcı olarak kaydınız yapılmıştır! Başarılar dileriz.");
-      
-      // Katılımcı bilgileri formunu göster
+      // Katılım formunu göster
       document.getElementById("formContainer").style.display = "block";
     }
 
@@ -159,7 +174,11 @@
       const surname = document.getElementById("surname").value;
       const email = document.getElementById("email").value;
 
+      // Katılım tamamlandı mesajı
       alert(`Katılım Başarıyla Tamamlandı!\nAd: ${name}\nSoyad: ${surname}\nE-posta: ${email}`);
+
+      // Ödeme kontrolü mesajını göster
+      document.getElementById("messageContainer").style.display = "block";
 
       // İlerleme çubuğunu güncelle
       document.getElementById("progressText").innerText = "%50"; // Örnek ilerleme güncellemesi
