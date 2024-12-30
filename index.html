@@ -61,6 +61,10 @@
     .description {
       font-size: 18px;
       margin: 20px 0;
+      background-color: rgba(0, 0, 0, 0.7); /* Opak arka plan */
+      padding: 15px;
+      border-radius: 10px;
+      line-height: 1.6; /* Satır aralığını açarak daha okunabilir hale getirildi */
     }
 
     .buttons {
@@ -156,7 +160,7 @@
 
     <!-- Message to show after form submission -->
     <div class="message-container" id="messageContainer">
-      Ödemeniz kontrol edilecek ve katılımınız onaylanacaktır.
+      Yeterli katılımcı sayısı bekleniyor.
     </div>
   </div>
 
@@ -185,7 +189,7 @@
       document.getElementById("messageContainer").style.display = "block";
 
       // İlerleme çubuğunu güncelle
-      document.getElementById("progressText").innerText = "%50"; // Örnek ilerleme güncellemesi
+      document.getElementById("progressText").innerText = "%0"; // Yeterli katılımcı bekleniyor
 
       // Formu sıfırla ve gizle
       document.getElementById("userForm").reset();
