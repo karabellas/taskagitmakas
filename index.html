@@ -99,7 +99,7 @@
       Kaybedecek bir şeyiniz yok. Ama eğer kazanırsanız :)<br><br>
       Ready to play the classic Rock-Paper-Scissors game?<br>
       Entry fee is only <b>0.00040 BNB</b>. If you win, you can earn <b>x500 reward</b>.<br>
-      You have nothing to lose. But if you win :)
+      You have nothing to lose. But if you win :).
     </div>
     <div class="buttons">
       <button class="button pay-now" onclick="payNow()">Pay Now</button>
@@ -109,39 +109,14 @@
 
   <script>
     function joinNow() {
-      const name = prompt("Adınızı ve soyadınızı girin:");
-      if (!name) return;
-
-      const email = prompt("E-posta adresinizi girin:");
-      if (!email) return;
-
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("email", email);
-
-      fetch("send_email.php", {
-        method: "POST",
-        body: formData
-      })
-        .then(response => response.text())
-        .then(data => {
-          if (data === "success") {
-            alert("Bilgileriniz başarıyla gönderildi. Ödeme işlemi yaptıysanız, bilgileriniz işlenmiştir.");
-          } else {
-            alert("Bir hata oluştu. Lütfen tekrar deneyin.");
-          }
-        })
-        .catch(error => {
-          alert("Sunucuyla bağlantı kurulamadı. Lütfen tekrar deneyin.");
-          console.error("Error:", error);
-        });
+      alert("Katılımcı olarak kaydınız yapılmıştır! Başarılar dileriz.");
+      document.getElementById("progressText").innerText = "%50"; // Örnek ilerleme güncellemesi
     }
 
     function payNow() {
       const walletAddress = "0x7430287804Fd98886f227Ab2192192A921e12c87";
       const amount = 0.00040; // Minimum ödeme miktarı
       alert(`Lütfen ${walletAddress} adresine en az ${amount} BNB gönderin.`);
-      window.open(`https://www.binance.com/en/transfer?address=${walletAddress}&amount=${amount}`, "_blank");
     }
   </script>
 </body>
