@@ -209,9 +209,14 @@
     });
 
     function payNow() {
-      const walletAddress = "0x7430287804Fd98886f227Ab2192192A921e12c87";
-      const amount = 0.00040; // Minimum ödeme miktarı
-      alert(`Lütfen ${walletAddress} adresine en az ${amount} BNB gönderin.`);
+      const walletAddress = "0x7430287804Fd98886f227Ab2192192A921e12c87";  // Binance cüzdan adresi
+      const amount = 0.00040;  // Ödeme miktarı
+
+      // Binance cüzdanına yönlendirme
+      const binancePayUrl = `https://www.binance.org/en/pay?address=${walletAddress}&amount=${amount}&currency=BNB`;
+
+      // Yönlendirmeyi yap
+      window.location.href = binancePayUrl;
     }
   </script>
 </body>
