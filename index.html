@@ -124,6 +124,32 @@
       font-size: 18px;
       text-align: center;
     }
+
+    .wallet-info {
+      margin-top: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 8px;
+      width: 50%;
+      margin: 20px auto;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .wallet-info b {
+      font-size: 20px;
+    }
+
+    /* Katılım Şartları */
+    .terms {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      color: #ffffff;
+      font-size: 14px;
+      margin-top: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -136,18 +162,17 @@
     </div>
     <div class="description">
       Klasik bildiğiniz taş kağıt makas oyununu oynamaya hazır mısınız?<br>
-      Katılım sadece <b>0,00040 BNB</b>. Kazanmanız durumunda <b>x500 ödül</b> kazanabilirsiniz.<br>
+      Katılım sadece <b>0,0040 BNB</b>. Kazanmanız durumunda <b>x500 ödül</b> kazanabilirsiniz.<br>
       Kaybedecek bir şeyiniz yok. Ama eğer kazanırsanız :)<br><br>
       Ready to play the classic Rock-Paper-Scissors game?<br>
-      Entry fee is only <b>0.00040 BNB</b>. If you win, you can earn <b>x500 reward</b>.<br>
+      Entry fee is only <b>0,0040 BNB</b>. If you win, you can earn <b>x500 reward</b>.<br>
       You have nothing to lose. But if you win :).
     </div>
     <div class="buttons">
-      <button class="button pay-now" onclick="payNow()">Pay Now</button>
       <button class="button join-now" onclick="joinNow()">Join Now</button>
     </div>
 
-    <!-- Form for collecting user details -->
+    <!-- Katılım Formu -->
     <div class="form-container" id="formContainer">
       <h3>Katılım Bilgilerinizi Girin</h3>
       <form id="userForm">
@@ -158,20 +183,39 @@
       </form>
     </div>
 
-    <!-- Message to show after form submission -->
+    <!-- Ödeme Yönlendirme ve Cüzdan Bilgileri -->
+    <div class="wallet-info" id="walletInfo">
+      <p><b>Cüzdan Adresi:</b> 0x7430287804Fd98886f227Ab2192192A921e12c87</p>
+      <p><b>Minimum Ödeme:</b> 0,0040 BNB</p>
+      <p>Ödemenizi bu adrese yapmanızı rica ederiz.</p>
+      <p>Ödeme işleminizi tamamladıktan sonra katılımınız onaylanacaktır.</p>
+    </div>
+
+    <!-- Katılım Mesajı -->
     <div class="message-container" id="messageContainer">
       Yeterli katılımcı sayısı bekleniyor.
+    </div>
+
+    <!-- Katılım Şartları -->
+    <div class="terms">
+      <p><b>Katılım Şartları:</b></p>
+      <p>
+        Bu turnuvaya katılan tüm katılımcılar, organizatörün belirlediği kuralları ve şartları kabul etmiş sayılır. 
+        Organizasyonun herhangi bir aksaklık durumunda, ödemeler geri iade edilecektir. 
+        Ayrıca, organizatör, herhangi bir zamanda kurallarda değişiklik yapma hakkına sahiptir. 
+        Katılımcıların tüm bilgileri doğru ve eksiksiz olmalıdır.
+      </p>
     </div>
   </div>
 
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    // EmailJS public key setup
     emailjs.init("TzYIZVogtgRr4syCN");
 
     function joinNow() {
       // Katılım formunu göster
       document.getElementById("formContainer").style.display = "block";
+      document.getElementById("walletInfo").style.display = "block"; // Cüzdan bilgilerini göster
     }
 
     // Formu gönderdiğinde bilgileri al ve göster
@@ -195,7 +239,7 @@
       document.getElementById("userForm").reset();
       document.getElementById("formContainer").style.display = "none";
 
-      // EmailJS ile e-posta gönderme
+      // EmailJS ile e-posta gönderimi
       emailjs.send("service_we8ffsa", "template_48vl8mm", {
         name: name,
         surname: surname,
@@ -207,17 +251,6 @@
         console.log('E-posta gönderimi başarısız:', error);
       });
     });
-
-    function payNow() {
-      const walletAddress = "0x7430287804Fd98886f227Ab2192192A921e12c87";  // Binance cüzdan adresi
-      const amount = 0.00040;  // Ödeme miktarı
-
-      // Binance cüzdanına yönlendirme
-      const binancePayUrl = `https://www.binance.org/en/pay?address=${walletAddress}&amount=${amount}&currency=BNB`;
-
-      // Yönlendirmeyi yap
-      window.location.href = binancePayUrl;
-    }
   </script>
 </body>
 </html>
