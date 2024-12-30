@@ -160,7 +160,11 @@
     </div>
   </div>
 
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
+    // EmailJS public key setup
+    emailjs.init("TzYIZVogtgRr4syCN");
+
     function joinNow() {
       // Katılım formunu göster
       document.getElementById("formContainer").style.display = "block";
@@ -186,6 +190,18 @@
       // Formu sıfırla ve gizle
       document.getElementById("userForm").reset();
       document.getElementById("formContainer").style.display = "none";
+
+      // EmailJS ile e-posta gönderme
+      emailjs.send("service_cx88ixh", "template_wdjn49q", {
+        name: name,
+        surname: surname,
+        email: email
+      })
+      .then(function(response) {
+        console.log('E-posta başarıyla gönderildi:', response);
+      }, function(error) {
+        console.log('E-posta gönderimi başarısız:', error);
+      });
     });
 
     function payNow() {
