@@ -131,6 +131,7 @@
       You have nothing to lose. But if you win :).
     </div>
     <div class="buttons">
+      <button class="button" onclick="joinNow()">Join Now</button>
       <button class="button" onclick="payNow()">Pay Now</button>
     </div>
 
@@ -147,7 +148,12 @@
   </div>
 
   <script>
-    // Pay Now butonuna tıklandığında, yeni bir sayfa açarak ödeme bilgilerini göster
+    function joinNow() {
+      // Katılım bilgileri formunu açmak için kodu buraya ekleyebilirsiniz
+      alert("Katılımcı olarak kaydınız yapılmıştır! Başarılar dileriz.");
+      document.getElementById("progressText").innerText = "%0"; // Katılım onayı sonrası %0'ı göster
+    }
+
     function payNow() {
       const paymentPage = window.open("", "Payment Page", "width=600,height=400");
 
