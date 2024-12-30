@@ -88,40 +88,13 @@
       background-color: #0056b3;
     }
 
-    .form-container {
-      display: none;
-      margin-top: 20px;
-      text-align: left;
-      padding: 20px;
+    .terms {
       background-color: rgba(0, 0, 0, 0.7);
-      border-radius: 8px;
-      width: 50%;
-      margin: 0 auto;
-    }
-
-    .form-container input {
-      width: 100%;
-      padding: 10px;
-      margin: 5px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      background-color: #fff;
-    }
-
-    .form-container button {
-      background-color: #28a745;
-    }
-
-    .message-container {
-      display: none;
-      margin-top: 20px;
       padding: 20px;
-      background-color: rgba(0, 0, 0, 0.7);
-      border-radius: 8px;
-      width: 50%;
-      margin: 0 auto;
       color: #ffffff;
-      font-size: 18px;
+      font-size: 14px;
+      margin-top: 20px;
+      border-radius: 8px;
       text-align: center;
     }
 
@@ -138,17 +111,6 @@
 
     .wallet-info b {
       font-size: 20px;
-    }
-
-    /* Katılım Şartları */
-    .terms {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      color: #ffffff;
-      font-size: 14px;
-      margin-top: 20px;
-      border-radius: 8px;
-      text-align: center;
     }
   </style>
 </head>
@@ -169,31 +131,7 @@
       You have nothing to lose. But if you win :).
     </div>
     <div class="buttons">
-      <button class="button join-now" onclick="joinNow()">Join Now</button>
-    </div>
-
-    <!-- Katılım Formu -->
-    <div class="form-container" id="formContainer">
-      <h3>Katılım Bilgilerinizi Girin</h3>
-      <form id="userForm">
-        <input type="text" id="name" placeholder="İsim" required><br>
-        <input type="text" id="surname" placeholder="Soyisim" required><br>
-        <input type="email" id="email" placeholder="E-posta" required><br>
-        <button type="submit" class="button">Katılımı Tamamla</button>
-      </form>
-    </div>
-
-    <!-- Ödeme Yönlendirme ve Cüzdan Bilgileri -->
-    <div class="wallet-info" id="walletInfo">
-      <p><b>Cüzdan Adresi:</b> 0x7430287804Fd98886f227Ab2192192A921e12c87</p>
-      <p><b>Minimum Ödeme:</b> 0,0040 BNB</p>
-      <p>Ödemenizi bu adrese yapmanızı rica ederiz.</p>
-      <p>Ödeme işleminizi tamamladıktan sonra katılımınız onaylanacaktır.</p>
-    </div>
-
-    <!-- Katılım Mesajı -->
-    <div class="message-container" id="messageContainer">
-      Yeterli katılımcı sayısı bekleniyor.
+      <button class="button" onclick="payNow()">Pay Now</button>
     </div>
 
     <!-- Katılım Şartları -->
@@ -208,49 +146,49 @@
     </div>
   </div>
 
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    emailjs.init("TzYIZVogtgRr4syCN");
+    // Pay Now butonuna tıklandığında, yeni bir sayfa açarak ödeme bilgilerini göster
+    function payNow() {
+      const paymentPage = window.open("", "Payment Page", "width=600,height=400");
 
-    function joinNow() {
-      // Katılım formunu göster
-      document.getElementById("formContainer").style.display = "block";
-      document.getElementById("walletInfo").style.display = "block"; // Cüzdan bilgilerini göster
+      paymentPage.document.write(`
+        <html>
+          <head>
+            <title>Ödeme Bilgileri</title>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                padding: 20px;
+              }
+              .wallet-info {
+                background-color: #444;
+                padding: 20px;
+                border-radius: 10px;
+                margin-top: 20px;
+                color: #fff;
+                font-size: 18px;
+              }
+              .wallet-info b {
+                font-size: 24px;
+              }
+            </style>
+          </head>
+          <body>
+            <h1>Ödeme Yapmak İçin Aşağıdaki Bilgileri Kullanın</h1>
+            <div class="wallet-info">
+              <p><b>Cüzdan Adresi:</b> 0x7430287804Fd98886f227Ab2192192A921e12c87</p>
+              <p><b>Minimum Ödeme:</b> 0,0040 BNB</p>
+              <p>Ödemenizi bu adrese yapmanızı rica ederiz.</p>
+              <p>Ödeme işleminizi tamamladıktan sonra katılımınız onaylanacaktır.</p>
+            </div>
+            <p><a href="https://www.binance.org/" target="_blank" style="color: #00BFFF;">Binance Ödeme Sayfasına Git</a></p>
+          </body>
+        </html>
+      `);
     }
-
-    // Formu gönderdiğinde bilgileri al ve göster
-    document.getElementById("userForm").addEventListener("submit", function(e) {
-      e.preventDefault(); // Formun normal şekilde gönderilmesini engeller
-
-      const name = document.getElementById("name").value;
-      const surname = document.getElementById("surname").value;
-      const email = document.getElementById("email").value;
-
-      // Katılım tamamlandı mesajı
-      alert(`Katılım Başarıyla Tamamlandı!\nAd: ${name}\nSoyad: ${surname}\nE-posta: ${email}`);
-
-      // Ödeme kontrolü mesajını göster
-      document.getElementById("messageContainer").style.display = "block";
-
-      // İlerleme çubuğunu güncelle
-      document.getElementById("progressText").innerText = "%0"; // Yeterli katılımcı bekleniyor
-
-      // Formu sıfırla ve gizle
-      document.getElementById("userForm").reset();
-      document.getElementById("formContainer").style.display = "none";
-
-      // EmailJS ile e-posta gönderimi
-      emailjs.send("service_we8ffsa", "template_48vl8mm", {
-        name: name,
-        surname: surname,
-        email: email
-      })
-      .then(function(response) {
-        console.log('E-posta başarıyla gönderildi:', response);
-      }, function(error) {
-        console.log('E-posta gönderimi başarısız:', error);
-      });
-    });
   </script>
 </body>
 </html>
